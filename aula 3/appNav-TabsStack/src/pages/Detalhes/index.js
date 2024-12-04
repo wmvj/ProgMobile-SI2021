@@ -1,10 +1,10 @@
-import React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
-export default function Sobre(){
+export default function Detalhes(){
   return(
     <View style={styles.container}>
-      <Text>Pagina sobre</Text>
+      <Text>Páginas de Detalhes</Text>
     </View>
   )
 }
