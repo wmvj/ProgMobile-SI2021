@@ -20,16 +20,16 @@ export default function Index() {
 
 
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{flex: 1, justifyContent: 'center', padding: 32, gap: 16}}>
             <Input
                 placeholder='Nome'
                 onChangeText={setName}
-                value='name'
+                value={name}
             />
             <Input
                 placeholder='Quantidade'
                 onChangeText={setQuantity}
-                value='quantity'
+                value={quantity}
             />
 
             <Button title='Salvar' onPress={create} />

@@ -28,4 +28,7 @@ export function useProductDatabase(){
         } finally{
             await statement.finalizeAsync()        }
     }
+
+
+    return {create}
 }
