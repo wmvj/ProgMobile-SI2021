@@ -1,7 +1,9 @@
-import {View, Button, Text} from 'react-native';
+import {View, Button, Alert, Text} from 'react-native';
 import {router} from 'expo-router';
 import {useState} from 'react';
 import {Input} from "@/components/Input"
+
+import {useProductDatabase} from "@/database/useProductDatabase";
 
 export default function Index() {
 
@@ -10,11 +12,23 @@ export default function Index() {
     const [quantity, setQuantity] = useState("")
     const [products, setProducts] = useState([])
 
+    const productDatabase = useProductDatabase()
+
     async function create() {
         try {
-            
+            if (isNaN(Number(quantity))) {
+                return Alert.alert('Quantidade precisa ser um número!')
+            }
+
+            const response = await productDatabase.create({
+                name,
+                quantity: Number(quantity)
+            })
+
+            Alert.alert('Produto cadastrado com o ID: ' + response.insertRowId)
+
         } catch (error) {
-            
+            console.log(error)
         }
     }
 
