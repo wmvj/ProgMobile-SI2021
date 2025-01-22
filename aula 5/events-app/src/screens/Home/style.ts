@@ -36,5 +36,11 @@ export const styles = StyleSheet.create({
     buttonText:{
         color: '#FFF',
         fontSize: 24,
+    },
+    form:{
+        flexDirection: 'row',
+        width: '100%',
+        marginTop: 36,
+        marginBottom: 42,
     }   
   });
