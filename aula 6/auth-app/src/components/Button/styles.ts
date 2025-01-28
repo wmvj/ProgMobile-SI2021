@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 22,
         borderRadius: 16,
+        backgroundColor: '#000',
         gap: 7
     },
     icon:{
