@@ -2,32 +2,34 @@ import {View, Text, StyleSheet, Linking} from 'react-native'
 import { Button } from '@/components/Button'
 import {router} from 'expo-router'
 import * as WebBrowser from 'expo-web-browser'
-import {useEffect, useState} from "react" 
+import {useEffect, useState} from "react"
 import { useOAuth } from '@clerk/clerk-expo'
 import * as Liking from 'expo-linking'
+
+WebBrowser.maybeCompleteAuthSession()
 
 export default function SignIn() {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const googleAuth = useOAuth({strategy:"oauth_google"})
+  const googleAuth = useOAuth({strategy:"oauth_google"}) // vamos usar para fazer a autenticação
 
   async function signInWithGoogle() {
 
     try {
       setIsLoading(true)
 
-      const redirectUrl = Liking.createURL("/")       
+      const redirectUrl = Liking.createURL("/")
       const oAuthFlow = await googleAuth.startOAuthFlow({redirectUrl})
 
       if(oAuthFlow.authSessionResult?.type === 'success') {
         if(oAuthFlow.setActive){
-          await oAuthFlow.setActive({session: oAuthFlow.createdSessionId})
+          await oAuthFlow.setActive({session: oAuthFlow.createdSessionId}) // armazena o ID da sessão
         }
       } else{
-        setIsLoading(false)
+        setIsLoading(false) // se decidir não finalizar o fluxo de autenticação
       }
-  
+
     } catch (error) {
       console.log(error)
       setIsLoading(false)
@@ -39,14 +41,13 @@ export default function SignIn() {
     return () => {
       WebBrowser.coolDownAsync()
     }
-
   },[])
 
   return (
     <View style={styles.container}>
         <Text style={styles.title}>SignIn</Text>
-        <Button 
-          icon="logo-google" 
+        <Button
+          icon="logo-google"
           title="Entrar com o Google"
           onPress={signInWithGoogle}
           isLoading={isLoading}

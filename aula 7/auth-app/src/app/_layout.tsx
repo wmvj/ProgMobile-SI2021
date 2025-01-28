@@ -7,19 +7,19 @@ const PUBLIC_CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_K
 
 function InitialLayout(){
 
-  const{isSignedIn, isLoaded} = useAuth()
-  
+  const{isSignedIn, isLoaded} = useAuth() // hook para verificar se o usuário esta logado ou se esta carregando
+
   useEffect(() => {
-    if(!isLoaded) return
+    if(!isLoaded) return // se não estiver carregado não segue
 
     if(isSignedIn){ //se o usuário está logado me direciona para a tela de home
       router.replace("/(auth)")
-    } else { 
+    } else {
       router.replace("/(public)") //se não está logado me direciona para a tela de login
-    }    
+    }
   },[isSignedIn])
 
-  return isLoaded ? <Slot/> : (
+  return isLoaded ? <Slot/> : ( // se carregado mostra o conteudo, caso contrário mostra o indicador de carregando
     <ActivityIndicator
       style={{flex: 1, justifyContent: "center", alignItems: "center"}}
     />
