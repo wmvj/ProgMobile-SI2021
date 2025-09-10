@@ -6,17 +6,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#d0d2d8',
     paddingTop: 62,
-    // padding: 24,
-    // gap: 24,
   },
-//   text: {
-//     fontSize: 32,
-//     fontWeight: 700,
-//     color: 'red',
-//   },
-  logo:{
-   height: 34,
-   width: 134, 
+  logo: {
+    height: 34,
+    width: 134,
   },
   form: {
     width: '100%',
@@ -49,5 +42,20 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     color: '#828282',
     fontWeight: 600,
-  }
+  },
+  separator: {
+    width: "100%",
+    height: 1,
+    backgroundColor: "#EEF0F5",
+    marginVertical: 16,
+  },
+  listContent: {
+    paddingTop: 24,
+    paddingBottom: 62,
+  },
+  empty: {
+    fontSize: 14,
+    color: "#808080",
+    textAlign: 'center'
+  },
 });
